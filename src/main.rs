@@ -17,4 +17,14 @@ fn main() {
     }
 
     // handle.join().unwrap();
+
+    let v = vec![1, 2, 3];
+
+    let handle = thread::spawn(move || {
+        println!("Here's a vector: {:?}", v);
+    });
+
+    // drop(v); // this is a scenario that reference to v won't be valid
+
+    handle.join().unwrap();
 }
