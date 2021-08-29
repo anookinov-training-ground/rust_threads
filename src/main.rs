@@ -8,6 +8,7 @@ fn main() {
     thread::spawn(move || {
         let val = String::from("hi");
         tx.send(val).unwrap();
+        println!("val is {}", val); // error as val has been moved after it's sent to another thread
     });
 
     let received = rx.recv().unwrap();
